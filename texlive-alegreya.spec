@@ -6,7 +6,7 @@
 # catalog-version undef
 Name:		texlive-alegreya
 Version:	20131113
-Release:	5
+Release:	6
 Summary:	Alegreya fonts with LaTeX support
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/fonts/alegreya
