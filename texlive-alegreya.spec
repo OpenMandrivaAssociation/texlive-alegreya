@@ -1,12 +1,12 @@
 Name:		texlive-alegreya
-Version:	20170414
-Release:	2
+Version:	64384
+Release:	1
 Summary:	Alegreya fonts with LaTeX support
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/fonts/alegreya
 License:	OFL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/alegreya.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/alegreya.doc.tar.xz
+Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/alegreya.r64384.tar.xz
+Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/alegreya.doc.r64384.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
@@ -36,23 +36,23 @@ much care and attention to detail in the design as the roman.
 Bold, black, small caps and five number styles are available.
 
 %files -n fonts-ttf-alegreya
-%{_datadir}/fonts/TTF/alegreya
+%{_datadir}/fonts/OTF/alegreya
 
 #-----------------------------------------------------------------------
 %post
-    %{_sbindir}/texlive.post
+%{_sbindir}/texlive.post
 
 %postun
-    if [ $1 -eq 0 ]; then
+if [ $1 -eq 0 ]; then
 	%{_sbindir}/texlive.post
-    fi
+fi
 
 #-----------------------------------------------------------------------
 %files
 %{_texmfdistdir}/fonts/enc/dvips/alegreya
 %{_texmfdistdir}/fonts/map/dvips/alegreya
+%{_texmfdistdir}/fonts/opentype/huerta/alegreya
 %{_texmfdistdir}/fonts/tfm/huerta/alegreya
-%{_texmfdistdir}/fonts/truetype/huerta/alegreya
 %{_texmfdistdir}/fonts/type1/huerta/alegreya
 %{_texmfdistdir}/fonts/vf/huerta/alegreya
 %{_texmfdistdir}/tex/latex/alegreya
@@ -60,7 +60,7 @@ Bold, black, small caps and five number styles are available.
 
 #-----------------------------------------------------------------------
 %prep
-%setup -c -a0 -a1
+%autosetup -p1 -c -a1
 
 %build
 
@@ -69,7 +69,7 @@ mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar fonts tex doc %{buildroot}%{_texmfdistdir}
 
 # Let's also make Alegreya available to the OS...
-mkdir -p %{buildroot}%{_datadir}/fonts/TTF
-cp -r fonts/truetype/huerta/alegreya %{buildroot}%{_datadir}/fonts/TTF/
-cd %{buildroot}%{_datadir}/fonts/TTF/alegreya
+mkdir -p %{buildroot}%{_datadir}/fonts/OTF
+cp -r fonts/opentype/huerta/alegreya %{buildroot}%{_datadir}/fonts/OTF/
+cd %{buildroot}%{_datadir}/fonts/OTF/alegreya
 mkfontscale .
