@@ -3,7 +3,7 @@ Version:	64384
 Release:	2
 Summary:	Alegreya fonts with LaTeX support
 Group:		Publishing
-URL:		http://www.ctan.org/tex-archive/fonts/alegreya
+URL:		https://www.ctan.org/tex-archive/fonts/alegreya
 License:	OFL
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/alegreya.r%{version}.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/alegreya.doc.r%{version}.tar.xz
