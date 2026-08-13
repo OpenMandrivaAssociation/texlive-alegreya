@@ -12,7 +12,8 @@ Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/alegreya.r%{tl_r
 Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/alegreya.doc.r%{tl_revision}.tar.xz
 BuildArch:	noarch
 BuildSystem:	texlive
-Provides:	texlive(%{tl_name}) = %{tl_revision}
+Requires:	texlive-tlpkg
+Provides:	texlive(%{tl_name}) = %{version}
 
 %description
 The Alegreya fonts are designed by Juan Pablo del Peral for Huerta
@@ -22,3 +23,10 @@ long texts. The italic has just as much care and attention to detail in
 the design as the roman. Bold, black, small caps and five number styles
 are available.
 
+
+%install -a
+mkdir -p %{buildroot}%{_texmf_updmap_d}
+cat > %{buildroot}%{_texmf_updmap_d}/%{tl_name} <<'TL_DROPIN_EOF'
+# from alegreya:
+Map Alegreya.map
+TL_DROPIN_EOF
